@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love! ❤️</title>
+    <style>
+        :root {
+            --bg-color: #ffeef8;
+            --primary-pink: #ff65a3;
+            --dark-pink: #d13b7d;
+            --text-color: #4a4a4a;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .container { width: 100%; max-width: 450px; background: white; border-radius: 20px; padding: 25px; box-shadow: 0 10px 30px rgba(255, 101, 163, 0.2); text-align: center; position: relative; }
+        .page { display: none; animation: fadeIn 0.5s ease-in-out forwards; }
+        .page.active { display: flex; flex-direction: column; justify-content: space-between; align-items: center; min-height: 520px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        h1 { color: var(--dark-pink); margin-bottom: 10px; font-size: 22px; }
+        p { font-size: 15px; line-height: 1.5; color: #666; }
+        .btn { background-color: var(--primary-pink); color: white; border: none; padding: 12px 25px; font-size: 15px; font-weight: bold; border-radius: 25px; cursor: pointer; transition: 0.3s; margin-top: 15px; box-shadow: 0 4px 15px rgba(255, 101, 163, 0.4); width: 85%; }
+        .btn:hover { background-color: var(--dark-pink); transform: scale(1.02); }
+        .card-grid { display: grid; grid-template-columns: repeat(2, 130px); gap: 15px; justify-content: center; margin: 15px 0; }
+        .flip-card { width: 130px; height: 130px; perspective: 1000px; cursor: pointer; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; font-size: 11.5px; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .c1 { background-color: #fff0f5; border: 2px dashed #ffb6c1; }
+        .c2 { background-color: #f0f8ff; border: 2px dashed #add8e6; }
+        .c3 { background-color: #fffacd; border: 2px dashed #f0e68c; }
+        .c4 { background-color: #f0fff0; border: 2px dashed #98fb98; }
+        .flip-card-back { background-color: var(--primary-pink); color: white; transform: rotateY(180deg); line-height: 1.4; font-weight: 500; }
+        .letter-box { background: #fffcf2; border-left: 5px solid var(--primary-pink); padding: 15px; text-align: left; border-radius: 5px; margin: 15px 0; max-height: 280px; overflow-y: auto; white-space: pre-line; font-size: 14.5px; line-height: 1.6; }
+        .reasons-list { text-align: left; width: 100%; max-height: 320px; overflow-y: auto; padding-right: 5px; }
+        .reason-item { background: #fff0f5; margin: 10px 0; padding: 12px 15px; border-radius: 10px; font-size: 13.5px; border-left: 4px solid var(--dark-pink); line-height: 1.4; }
+        .cake { position: relative; width: 120px; height: 100px; background: #f1c40f; border-radius: 10px 10px 0 0; margin-top: 50px; box-shadow: inset 0 -10px 0 #d4ac0d; }
+        .cake::before { content: ""; position: absolute; top: -20px; left: 52px; width: 15px; height: 30px; background: #e74c3c; border-radius: 4px; }
+        .flame { position: absolute; top: -42px; left: 54px; width: 12px; height: 25px; background: #ff5722; border-radius: 50% 50% 20% 20%; animation: flicker 0.1s ease-in-out infinite alternate; }
+        @keyframes flicker { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        .flame.blown { display: none; }
+        .gift-box { font-size: 80px; cursor: pointer; transition: 0.3s; margin: 30px 0; }
+        .gift-box:hover { transform: scale(1.1); }
+        .confetti { position: absolute; width: 8px; height: 8px; opacity: 0.7; position: fixed; top: -10px; z-index: 999; animation: fall linear infinite; }
+        @keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <!-- Wikimedia Commons High-Speed Direct Link -->
+    <audio id="bgMusic" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Nostalgia_-_Piano_and_Strings_Instrumental.mp3" preload="auto" loop></audio>
+
+    <div class="container" onclick="playMusicOnce()">
+
+        <!-- ================= PAGE 1: FLIP CARDS ================= -->
+        <div id="page1" class="page active">
+            <div>
+                <h1>Our Little Story ✨</h1>
+                <p>Flip the cards to reveal the magic...</p>
+            </div>
+            <div class="card-grid">
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front c1">🎂<br>Tap to Reveal</div>
+                        <div class="flip-card-back">To the one who holds my 🫀heart, happy 🥹birthday!</div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front c2">🌸<br>Tap to Reveal</div>
+                        <div class="flip-card-back">You are the most special girl in the world and I'm so lucky to have you as my 😭🥹🌍girlfriend.</div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front c3">⭐<br>Tap to Reveal</div>
+                        <div class="flip-card-back">I just want to hold your hand ♾️ forever.</div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front c4">🤗<br>Tap to Reveal</div>
+                        <div class="flip-card-back">You make me smile every single day😭🥹</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" onclick="nextPage(2)">Read Birthday Letter 💌</button>
+        </div>
+
+        <!-- ================= PAGE 2: BIRTHDAY LETTER ================= -->
+        <div id="page2" class="page">
+            <div>
+                <h1>A Birthday Letter 📝</h1>
+                <div class="letter-box">
+                    <strong>My Dearest PAYAL(yuhiiiiiii🥹🌍🫀😭),</strong><br><br>On the beautiful day 🫀❣️of Diwali, 13th November, our paths crossed for the very first time🥹🫀. Just two days later, on 15th November, you asked me to be yours🫂🌍. Back then, you were in 7th grade🧑‍🎨; today, you're in 10th grade👱. Time has changed our classes, but it has never changed my love🌹🥹🫀 for you. Every day, every memory🫀, and every heartbeat 🫀still reminds me that meeting you was the most 🌍beautiful gift life ever gave me. ❤️✨🥹😭😭😭🌍🫂<br><br>Forever Yours, <br><strong>Aarav 🫀🥹</strong>
+                </div>
+            </div>
+            <button class="btn" onclick="nextPage(3)">See Special Lines 👇</button>
+        </div>
+
+        <!-- ================= PAGE 3: REASONS LIST ================= -->
+        <div id="page3" class="page">
+            <div>
+                <h1>Reasons I Love You PAYAL(yuhiiiiiii🥹🌍🫀😭) ❤️</h1>
+                <div class="reasons-list">
+                    <div class="reason-item">✨ <strong>#01</strong> "You gave me a watch, but after that day... my heart has been running only on your time. ⌚❤️😂"</div>
+                    <div class="reason-item">✨ <strong>#02</strong> "That first hand hold was illegal... because you stole my heartbeat without permission. 🤭🫀"</div>
+                    <div class="reason-item">✨ <strong>#03</strong> "Special thanks to your parents... one created you, and the other accidentally created my lifetime obsession. 😂❤️"</div>
+                    <div class="reason-item">✨ <strong>#04</strong> "You're my favorite headache... and honestly, I don't want the cure. 😂🫶❤️"</div>
+                    <div class="reason-item">✨ <strong>#05</strong> "You weren't my first crush... you were my final decision. 😌❤️♾️"</div>
+                </div>
+            </div>
+            <button class="btn" onclick="nextPage(4)">Open Your Gift Box 🎁</button>
+        </div>
+
+        <!-- ================= PAGE 4: CAKE BLOWING ================= -->
+        <div id="page4" class="page">
+            <div>
+                <h1>Blow the Candle, PAYAL(yuhiiiiiii🥹🌍🫀😭)! 🎂</h1>
+                <p>Make a secret wish before you blow it out...</p>
+                <div class="cake"><div class="flame" id="cakeFlame"></div></div>
+            </div>
+            <button class="btn" id="blowBtn" onclick="blowCandle()">Tap to Blow Candle 🕯️</button>
+        </div>
+
+        <!-- ================= PAGE 5: HAPPY BIRTHDAY OUTRO ================= -->
+        <div id="page5" class="page">
+            <div>
+                <h1>Happy Birthday PAYAL(yuhiiiiiii🥹🌍🫀😭)! 🎉</h1>
+                <div class="gift-box" id="gift" onclick="openGift()">🎁</div>
+                <h2 id="finalMessage" style="display:none; color: var(--dark-pink); margin-top: 15px; animation: fadeIn 0.5s;">
+                    May all your dreams come true this year! ✨❤️
+                </h2>
+            </div>
+            <p style="font-size: 12px; color: #aaa; margin-top: 20px;">Made with ❤️ by Aarav 🫀🥹</p>
+        </div>
+
+    </div>
+
+    <script>
+        let musicStarted = false;
+        const myAudio = document.getElementById('bgMusic');
+
+        function playMusicOnce() {
+            if (!musicStarted) {
+                myAudio.play()
+                .then(() => { musicStarted = true; })
+                .catch(e => console.log("Playback failed."));
+            }
+        }
+        
+        document.body.addEventListener('click', playMusicOnce);
+        document.body.addEventListener('touchstart', playMusicOnce);
+
+        function nextPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('page' + pageNumber).classList.add('active');
+            if(pageNumber === 5) { startConfetti(); }
+        }
+        function blowCandle() {
+            document.getElementById('cakeFlame').classList.add('blown');
+            document.getElementById('blowBtn').innerText = "Wish Made! ✨";
+            setTimeout(() => { nextPage(5); }, 1200);
+        }
+        function openGift() {
+            document.getElementById('gift').innerText = "🎉🎈💖";
+            document.getElementById('finalMessage').style.display = "block";
+            for(let i=0; i<40; i++) { createConfetti(); }
+        }
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            confetti.style.backgroundColor = ['#ff65a3', '#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff'][Math.floor(Math.random() * 6)];
+            document.body.appendChild(confetti);
+            setTimeout(() => { confetti.remove(); }, 5000);
+        }
+        function startConfetti() { setInterval(createConfetti, 150); }
+    </script>
+</body>
+</html>
